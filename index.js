@@ -9,10 +9,27 @@ const PORT = 5000
 function handleListening() {
   console.log(`Listening on: http://localhost:${PORT}`)
 }
-
-function handleHome(req, res) {
-  res.send('hello')
-}
-
-app.get('/', handleHome)
 app.listen(PORT, handleListening)
+
+/**
+ * Home
+ */
+app.get('/', (req, res) => {
+  res.send('hello')
+})
+
+/**
+ * Sample
+ */
+app.post('/sample', (req, res) => {
+  
+  console.log('/sample !!!')
+  console.dir(req)
+
+  try {
+    res.json('{ code: "AAA" }')
+  } catch(e) {
+    console.log('/sample error!!!')
+  }
+
+})
